@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quand seras-tu millionnaire? - JORA</title>
+<style>
+body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:15px}
+.card{background:#0a0a0a;padding:28px;border-radius:25px;max-width:400px;margin:30px auto;border:2px solid #FFD700;box-shadow:0 0 30px #FFD70044}
+input{padding:16px;width:85%;border-radius:12px;border:none;margin:10px 0;font-size:17px;text-align:center;background:#222;color:#fff}
+button{padding:16px;background:linear-gradient(90deg,#FFD700,#ff8a00);border:none;border-radius:12px;color:#000;font-weight:bold;font-size:18px;width:95%;cursor:pointer;margin-top:15px}
+.million{font-size:60px;margin:15px}
+.info{background:#1a1a1a;padding:15px;border-radius:15px;margin:10px 0;border-left:4px solid #FFD700;text-align:left}
+</style>
+</head>
+<body>
+<div class="card">
+<div class=million>💰</div>
+<h1>CALCUL DE RICHESSE</h1>
+<p>Système secret de JORA - 98% précis</p>
+<input type="text" id="nom" placeholder="Ton prénom">
+<input type="text" id="age" placeholder="Ton âge Ex: 19">
+<button onclick="calculer()">💵 Voir mon futur</button>
+<div id="res" style="display:none;margin-top:20px"></div>
+</div>
+<script>
+function calculer(){
+let nom=document.getElementById('nom').value.trim();
+let age=parseInt(document.getElementById('age').value);
+if(!nom||!age)return alert('Remplis tout !');
+let base=nom.split('').reduce((x,y)=>x+y.charCodeAt(0),0)+age;
+let jobs=["Entrepreneur à Lubumbashi","Influenceur TikTok","Trader Crypto","Propriétaire de Shops","Boss dans le diamant","CEO Tech"];
+let job=jobs[base%jobs.length];
+let ageMillion=age+(5+(base%10));
+let argent=[5,12,25,50,100,500][base%6];
+let voiture=["G Wagon","Range Rover","Toyota Fortuner","Benz C-Class","Lamborghini Urus"][base%5];
+
+let res=document.getElementById('res');
+res.style.display='block';
+let vraiLien="https://kirikoulepetit48-lang.github.io/Richesse.html";
+let texteFinal=`💰 CALCUL RICHESSE JORA\n\n${nom} sera MILLIONNAIRE à ${ageMillion} ans !\n💼 Métier: ${job}\n💵 Fortune: ${argent} Millions $\n🚗 Voiture: ${voiture}\n\nCalcule ta richesse ici: ${vraiLien}`;
+
+res.innerHTML=`
+<h2 style=color:#FFD700>${nom}, ton futur est riche !</h2>
+<div class=info>💼 <b>Futur métier:</b> ${job}</div>
+<div class=info>📅 <b>Millionnaire à:</b> ${ageMillion} ans</div>
+<div class=info>💵 <b>Fortune estimée:</b> ${argent} Millions $</div>
+<div class=info>🚗 <b>Ta future voiture:</b> ${voiture}</div>
+<div class=info>🏠 <b>Maison:</b> Villa à Lubumbashi + 1 à Dubaï</div>
+<p style=color:#FFD700;margin-top:15px>🔥 99% des riches ont eu ce même résultat</p>
+<button style=background:#25D366;color:#fff onclick="partager()">📲 Envoyer sur WhatsApp</button>
+<br><br>
+<button style=background:#222;color:#fff onclick="location.reload()">🔄 Re-calculer</button>
+`;
+window.texteFinal=texteFinal;
+}
+function partager(){
+window.open('https://wa.me/?text='+encodeURIComponent(window.texteFinal),'_blank');
+}
+</script>
+</body>
+</html>
